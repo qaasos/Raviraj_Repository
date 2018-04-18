@@ -7,6 +7,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Synchronization {
 
@@ -18,7 +20,8 @@ public class Synchronization {
 		
 		
 		WebDriver driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		WebDriverWait d = new WebDriverWait(driver,20);
+		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		driver.get("https://alaskatrips.poweredbygps.com/");
 		driver.manage().window().maximize();
@@ -29,6 +32,8 @@ public class Synchronization {
 		//driver.findElement(By.xpath("//input[@id='hotel-destination']")).sendKeys(Keys.ENTER);
 		
 		driver.findElement(By.id("hotel-checkin")).sendKeys(Keys.ENTER);
+		
+		d.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@href,'New-York-Hotels-WestHouse')]")));
 		
 		driver.findElement(By.xpath("//a[contains(@href,'New-York-Hotels-WestHouse')]")).click();	
 		

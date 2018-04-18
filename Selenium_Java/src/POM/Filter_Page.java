@@ -37,7 +37,7 @@ public class Filter_Page {
 	
 	public void ClickOnMediumPriceJacket()
 	{
-		driver.findElement(By.xpath("//*[@id='woocommerce_price_filter-1']/form/div/div[2]/button")).click();
+		driver.findElements(By.xpath("//div[@class='noo-thumbnail-product hover-device']")).get(0).click();
 	}
 	
 

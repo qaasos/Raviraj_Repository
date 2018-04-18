@@ -12,7 +12,7 @@ WebDriver driver;
 		if(browser.equalsIgnoreCase("chrome"))
 		{
 			
-			System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-extensions");
 			options.addArguments("disable-infobars");

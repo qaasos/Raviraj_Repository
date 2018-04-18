@@ -18,6 +18,9 @@ public class HomePage2 {
 	public WebDriver driver;
 	public WebDriverWait wait;
 	
+	By search=By.id("horus-querytext");
+	By areaname=By.id("horus-querytext");
+	
 	public HomePage2(WebDriver driver) throws Exception 
 	{
 		this.driver = driver;
@@ -31,9 +34,9 @@ public class HomePage2 {
 	
 	public void textSearch() throws Exception
 	{
-		driver.findElement(By.id("horus-querytext")).sendKeys("Pune");
+		driver.findElement(search).sendKeys("Pune");
 		Thread.sleep(1000);
-		driver.findElement(By.id("horus-querytext")).sendKeys(Keys.DOWN);
+		driver.findElement(search).sendKeys(Keys.DOWN);
 		
 		
 		JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -85,8 +88,8 @@ public class HomePage2 {
 		Select s2 = new Select(driver.findElement(By.id("select-num-children-1")));
 		s2.selectByValue("1");
 		
-		Select s3 = new Select(driver.findElement(By.id("select-ages-children-1-78")));
-		s3.selectByValue("4");
+		Select s3 = new Select(driver.findElement(By.id("select-ages-children-1-77")));
+		s3.selectByValue("3");
 		
 		//driver.findElement(By.xpath("//span[@class='btn__text']")).click();
 		

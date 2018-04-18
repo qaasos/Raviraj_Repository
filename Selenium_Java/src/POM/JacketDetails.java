@@ -17,7 +17,7 @@ public class JacketDetails {
 public void ClickonAddTocart()
 	{
 		
-		driver.findElement(By.xpath("//*[@id='product-2004']/div[1]/div[2]/form/button")).click();
+		driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt']")).click();
 	}
 
 public void ClickOnViewCart()
