@@ -1,0 +1,123 @@
+package Trivago_POM;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Utils2.AutoSugest;
+
+public class TrivagoHome extends AutoSugest {
+	
+	public WebDriver driver;
+	public WebDriverWait wait;
+	
+	By search=By.id("horus-querytext");
+
+	public TrivagoHome(WebDriver driver) throws Exception 
+	{
+		this.driver = driver;
+		this.wait = new WebDriverWait(this.driver, 180);
+	}
+	
+	
+
+	public void GoToHomePage(String xyz) {
+		// TODO Auto-generated method stubdriver.get(URL);
+		driver.get(xyz);
+		driver.manage().window().maximize();
+		
+	}
+	
+	public  void Date() throws Exception
+	{
+		driver.findElement(search).sendKeys(Keys.ENTER);
+		//Thread.sleep(3000);
+		WebDriverWait w = new WebDriverWait(driver, 5);
+		w.until(ExpectedConditions.visibilityOfElementLocated(search));
+		System.out.println("Date1");
+		
+		WebDriverWait w1 = new WebDriverWait(driver, 5);
+		w1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//time[@datetime='2018-05-01']")));
+		
+		driver.findElement(By.xpath("//time[@datetime='2018-05-01']")).click();
+		System.out.println("Date2");
+		
+		driver.findElement(By.xpath("//time[@datetime='2018-05-02']")).click(); 
+		//driver.findElement(By.xpath("//span[@class='icon-ic btn-horus__icon icon-rtl']")).click();
+	    driver.findElement(By.xpath("//*[@class='horus__col horus__col--roomtype']/button")).click();
+		
+		System.out.println("RoomType");
+		Thread.sleep(3000);
+		driver.findElements(By.xpath("//span[@class='df_component df_label']")).get(2).click();
+		System.out.println("NumOfAdault");
+		Thread.sleep(3000);
+		Select s1 = new Select(driver.findElement(By.id("select-num-adults-1")));
+		s1.selectByValue("2");
+		System.out.println("NumOfChildern");
+		Select s2 = new Select(driver.findElement(By.id("select-num-children-1")));
+		s2.selectByValue("1");
+		System.out.println("NumOfChildernAge");
+		Select s3 = new Select(driver.findElement(By.xpath("//*[contains(@id,'select-ages-children-1-')]")));
+		s3.selectByValue("3");
+		
+		driver.findElements(By.className("btn__text")).get(1).click();
+		
+		
+		driver.findElements(By.className("fl-score")).get(4).click();
+	
+		Select s4 = new Select(driver.findElement(By.id("mf-select-sortby")));
+		s4.selectByVisibleText("Distance only");
+		
+		Thread.sleep(3000);
+		List<WebElement> HotelNames = driver.findElements(By.tagName("h3"));
+		List<WebElement> FilterHotelNames = new ArrayList<WebElement>();
+		for(WebElement E : HotelNames)
+		{  
+			if(!E.getText().equals(""))
+			{
+		//	System.out.println(E.getText());
+			FilterHotelNames.add(E);
+			}
+					
+		}
+		
+		//System.out.println(FilterHotelNames.size());
+		
+		List<WebElement> HotelPrices= driver.findElements(By.cssSelector(".item__best-price"));
+		List<WebElement> FilterHotelPrices = new ArrayList<WebElement>();
+		for(WebElement E : HotelPrices)
+		{  
+			if(!E.getText().equals(""))
+			{ //System.out.println(E.getText());
+			FilterHotelPrices.add(E);
+			}
+		}
+		
+		//System.out.println(FilterHotelPrices.size());
+		
+		int count = 0;
+		for(WebElement showHotelNames : FilterHotelNames)
+		{
+			System.out.println(showHotelNames.getText() + " " + FilterHotelPrices.get(count).getText().replace("₹", "Rs. "));
+			count++;
+		}
+		
+		
+		
+		
+		
+	}
+
+
+
+}
+	
+	
