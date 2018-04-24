@@ -127,19 +127,20 @@ public class TrivagoHome2 extends AutoSugest {
 				
 				
 				//List<WebElement> dates = driver.findElements(By.className("cal-month cal-month--first-month"));
-				int count=driver.findElements(By.className("cal-month cal-month--first-month")).size();
+				int count=driver.findElements(By.className("cal-day-wrap")).size();
 				System.out.println(count);
 				for(int i = 0;i<count;i++)
 				{
-					String text = driver.findElements(By.className("cal-month cal-month--first-month")).get(i).getText();
+					String text = driver.findElements(By.className("cal-day-wrap")).get(i).getText();
 					if (text.equalsIgnoreCase("28"))
 					{
-						driver.findElements(By.className("cal-month cal-month--first-month")).get(i).click();
+						driver.findElements(By.className("cal-day-wrap")).get(i).click();
 						break;
 					}
 				}
 				
-				while(!driver.findElement(By.xpath("//th[@id='cal-heading-month-first']")).getText().contains("June"))
+					
+				while(!driver.findElement(By.xpath("//th[@id='cal-heading-month-second']")).getText().contains("June"))
 				{
 					driver.findElement(By.xpath("//button[@class='cal-btn-next']")).click();
 				} 
@@ -147,17 +148,19 @@ public class TrivagoHome2 extends AutoSugest {
 				Thread.sleep(3000);
 				
 				
-				List<WebElement> dates1 = driver.findElements(By.className("cal-month cal-month--second-month"));
-				int count3=driver.findElements(By.className("cal-month cal-month--second-month")).size();
+				List<WebElement> dates1 = driver.findElements(By.className("cal-day-wrap"));
+				int count3=driver.findElements(By.className("cal-day-wrap")).size();
 				System.out.println(count3);
 				for(int i = 0;i<count3;i++)
 				{
-					String text = driver.findElements(By.className("cal-month cal-month--second-month")).get(i).getText();
-					if (text.equalsIgnoreCase("3"))
+					String text = driver.findElements(By.className("cal-day-wrap")).get(i).getText();
+					if (text.equalsIgnoreCase("2"))
 					{
-						driver.findElements(By.className("cal-month cal-month--second-month")).get(i).click();
+						driver.findElements(By.className("cal-day-wrap")).get(i).click();
+						System.out.println(text);
 						break;
 					}
+					
 				}
 				
 				
