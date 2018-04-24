@@ -31,10 +31,16 @@ public class CheckOutPage
         driver.findElement(By.xpath("//div[@id='select2-drop']/ul/li[2]/div")).click();  
         
         driver.findElement(By.id("billing_postcode")).sendKeys("411046");
-        driver.findElement(By.name("ship_to_different_address")).click();
         
+     
+        driver.findElement(By.name("ship_to_different_address")).click();
+        Thread.sleep(4000);
         driver.findElement(By.xpath("//*[@id='terms']")).click();
+       // driver.findElement(By.xpath("//p[@class='form-row terms wc-terms-and-conditions woocommerce-validated']/input")).click();
+        
+        Thread.sleep(3000);
         driver.findElement(By.id("place_order")).click();
+        
         
         
 	}

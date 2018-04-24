@@ -174,6 +174,7 @@ public class TrivagoHome2 extends AutoSugest {
 				
 
 			}
+			
 				
 	    //driver.findElement(By.xpath("//*[@class='horus__col horus__col--roomtype']/button")).click();
 		
