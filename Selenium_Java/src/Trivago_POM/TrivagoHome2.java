@@ -118,7 +118,7 @@ public class TrivagoHome2 extends AutoSugest {
 			
 			else 
 			{
-				while(!driver.findElement(By.xpath("//th[@id='cal-heading-month-first']")).getText().contains("May"))
+				while(!driver.findElement(By.xpath("//th[@id='cal-heading-month-first']")).getText().contains(mon))
 				{
 					driver.findElement(By.xpath("//button[@class='cal-btn-next']")).click();
 				} 
@@ -132,15 +132,18 @@ public class TrivagoHome2 extends AutoSugest {
 				for(int i = 0;i<count;i++)
 				{
 					String text = driver.findElements(By.className("cal-day-wrap")).get(i).getText();
-					if (text.equalsIgnoreCase("28"))
+					if (text.equalsIgnoreCase(frmd))
 					{
 						driver.findElements(By.className("cal-day-wrap")).get(i).click();
 						break;
 					}
 				}
 				
+				
+				
+				
 					
-				while(!driver.findElement(By.xpath("//th[@id='cal-heading-month-second']")).getText().contains("June"))
+				while(!driver.findElement(By.xpath("//th[@id='cal-heading-month-second']")).getText().contains(mon1))
 				{
 					driver.findElement(By.xpath("//button[@class='cal-btn-next']")).click();
 				} 
@@ -148,16 +151,20 @@ public class TrivagoHome2 extends AutoSugest {
 				Thread.sleep(3000);
 				
 				
-				List<WebElement> dates1 = driver.findElements(By.className("cal-day-wrap"));
-				int count3=driver.findElements(By.className("cal-day-wrap")).size();
-				System.out.println(count3);
-				for(int i = 0;i<count3;i++)
+				List<WebElement> dates3 = driver.findElements(By.xpath("//td[contains(@headers,'cal-heading-month-second')]"));
+				int count7=driver.findElements(By.xpath("//td[contains(@headers,'cal-heading-month-second')]")).size();
+				System.out.println(count7);
+				for(int r = 0;r<count7;r++)
 				{
-					String text = driver.findElements(By.className("cal-day-wrap")).get(i).getText();
-					if (text.equalsIgnoreCase("2"))
-					{
-						driver.findElements(By.className("cal-day-wrap")).get(i).click();
-						System.out.println(text);
+					String text4 = driver.findElements(By.xpath("//td[contains(@headers,'cal-heading-month-second')]")).get(r).getText();
+					if (text4.equalsIgnoreCase(tod))
+					{	
+						WebElement we = driver.findElements(By.xpath("//td[contains(@headers,'cal-heading-month-second')]")).get(r);
+						JavascriptExecutor js = (JavascriptExecutor)driver;
+						((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", we);
+						Thread.sleep(3000);
+						driver.findElements(By.xpath("//td[contains(@headers,'cal-heading-month-second')]")).get(r).click();
+						System.out.println(text4);
 						break;
 					}
 					
@@ -233,7 +240,7 @@ public class TrivagoHome2 extends AutoSugest {
 	}
 
 
-
+	
 }
 	
 	
