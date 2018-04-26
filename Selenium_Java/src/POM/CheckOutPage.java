@@ -41,7 +41,7 @@ public class CheckOutPage
         Thread.sleep(3000);
         driver.findElement(By.id("place_order")).click();
         
-        
+	
         
 	}
 
