@@ -52,7 +52,7 @@ public class TrivagoHotel {
 		Thread.sleep(3000);
 		System.out.println("Before click on minimul price");
 		//driver.findElement(By.xpath("//*[@class ='item__best-details']//strong[.= '₹"+PriceValue+"']/../../following::button")).click();
-		driver.findElement(By.xpath("//*[@class ='item__best-details']//strong/../following::button")).click();
+		driver.findElement(By.xpath("//*[@class ='item__best-details']//strong[.= '₹"+PriceValue+"']/../following::button")).click();
 		
 		
 	}
